@@ -166,6 +166,8 @@ return [
          * Package Service Providers...
          */
 
+        \TokenizedLogin\TokenizedLoginServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
