@@ -1,3 +1,3 @@
 <?php
 
-Route::get('request', 'TokenController@request')->name('request');
+Route::post('request', 'TokenController@request')->name('request');
