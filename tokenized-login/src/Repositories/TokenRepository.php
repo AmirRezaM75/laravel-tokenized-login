@@ -11,8 +11,8 @@ class TokenRepository
         return random_int(100000, 1000000 - 1);
     }
 
-    public function save(int $token, $user)
+    public function save(int $token, $userId)
     {
-        cache()->set($token . '_tokenized-login', $user->id, 120);
+        cache()->set($token . '_tokenized-login', $userId, 120);
     }
 }

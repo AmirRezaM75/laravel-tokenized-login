@@ -16,6 +16,6 @@ class TokenController
 
         $token = TokenRepositoryFacade::generate();
 
-        TokenRepositoryFacade::save($token, $user);
+        TokenRepositoryFacade::save($token, $user->id);
     }
 }
