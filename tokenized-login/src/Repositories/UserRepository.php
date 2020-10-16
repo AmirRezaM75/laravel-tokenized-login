@@ -12,4 +12,9 @@ class UserRepository
     {
         return User::where('email', $email)->first();
     }
+
+    public function isBanned($userId)
+    {
+        return User::find($userId)->is_banned;
+    }
 }

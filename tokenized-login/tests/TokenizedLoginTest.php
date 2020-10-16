@@ -16,6 +16,11 @@ class TokenizedLoginTest extends TestCase
         $this->withoutExceptionHandling();
         $email = 'amirreza@hotmail.com';
 
+        UserRepositoryFacade::shouldReceive('isBanned')
+            ->once()
+            ->with(1)
+            ->andReturn(false);
+
         UserRepositoryFacade::shouldReceive('getUserByEmail')
             ->once()
             ->with($email)
@@ -31,5 +36,27 @@ class TokenizedLoginTest extends TestCase
         $this->post(route('tokenized-login.request'),[
             'email' => $email
         ])->assertStatus(200);
+    }
+
+    /** @test */
+    public function banned_users_can_not_request()
+    {
+        User::unguard();
+        $email = 'amirreza@hotmail.com';
+
+        UserRepositoryFacade::shouldReceive('getUserByEmail')
+            ->once()
+            ->with($email)
+            ->andReturn($user = new User(['id' => 1, 'email' => $email]));
+
+        UserRepositoryFacade::shouldReceive('isBanned')->once()->with(1)->andReturn(true);
+
+        TokenRepositoryFacade::shouldReceive('generate')->never();
+
+        TokenRepositoryFacade::shouldReceive('save')->never();
+
+        $this->post(route('tokenized-login.request'),[
+            'email' => $email
+        ])->assertJson(['error' => 'You are banned']);
     }
 }
