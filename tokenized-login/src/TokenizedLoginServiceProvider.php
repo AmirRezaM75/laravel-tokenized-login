@@ -4,11 +4,18 @@ namespace TokenizedLogin;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use TokenizedLogin\Facades\TokenRepositoryFacade;
+use TokenizedLogin\Facades\UserRepositoryFacade;
+use TokenizedLogin\Repositories\TokenRepository;
+use TokenizedLogin\Repositories\UserRepository;
 
 class TokenizedLoginServiceProvider extends ServiceProvider {
 
     public function register()
     {
+        UserRepositoryFacade::proxy(UserRepository::class);
+        TokenRepositoryFacade::proxy(TokenRepository::class);
+
         Route::prefix('api/tokenized-login')
             ->name('tokenized-login.')
             ->middleware('api')

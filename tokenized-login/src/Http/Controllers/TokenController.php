@@ -5,17 +5,17 @@ namespace TokenizedLogin\Http\Controllers;
 
 
 use Illuminate\Http\Request;
-use TokenizedLogin\Repositories\TokenRepository;
-use TokenizedLogin\Repositories\UserRepository;
+use TokenizedLogin\Facades\TokenRepositoryFacade;
+use TokenizedLogin\Facades\UserRepositoryFacade;
 
 class TokenController
 {
     public function request(Request $request)
     {
-        $user = UserRepository::getUserByEmail($request->get('email'));
+        $user = UserRepositoryFacade::getUserByEmail($request->get('email'));
 
-        $token = TokenRepository::generate();
+        $token = TokenRepositoryFacade::generate();
 
-        TokenRepository::save($token, $user);
+        TokenRepositoryFacade::save($token, $user);
     }
 }

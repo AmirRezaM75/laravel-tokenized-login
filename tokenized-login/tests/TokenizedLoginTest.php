@@ -9,6 +9,7 @@ class TokenizedLoginTest extends TestCase
     /** @test */
     public function it_can_request_token()
     {
+        $this->withoutExceptionHandling();
         $this->post(route('tokenized-login.request'))
             ->assertStatus(200);
     }
