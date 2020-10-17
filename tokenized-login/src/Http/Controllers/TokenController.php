@@ -22,6 +22,8 @@ class TokenController
 
         TokenRepositoryFacade::save($token, $user->id);
 
+        TokenRepositoryFacade::send($token, $user->id);
+
         return ResponderFacade::tokenIsSent();
     }
 }

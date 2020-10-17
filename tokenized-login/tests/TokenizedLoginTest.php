@@ -33,6 +33,8 @@ class TokenizedLoginTest extends TestCase
 
         TokenRepositoryFacade::shouldReceive('save')->once()->with('1234', $user->id);
 
+        TokenRepositoryFacade::shouldReceive('send')->once()->with('1234', $user->id);
+
         $this->post(route('tokenized-login.request'),[
             'email' => $email
         ])
@@ -58,6 +60,8 @@ class TokenizedLoginTest extends TestCase
 
         TokenRepositoryFacade::shouldReceive('save')->once()->with('1234', $user->id);
 
+        TokenRepositoryFacade::shouldReceive('send')->once()->with('1234', $user->id);
+
         $this->post(route('tokenized-login.request', ['client' => 'android']),[
             'email' => $email
         ])
@@ -81,6 +85,8 @@ class TokenizedLoginTest extends TestCase
         TokenRepositoryFacade::shouldReceive('generate')->never();
 
         TokenRepositoryFacade::shouldReceive('save')->never();
+
+        TokenRepositoryFacade::shouldReceive('send')->never();
 
         $this->post(route('tokenized-login.request'),[
             'email' => $email

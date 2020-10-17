@@ -15,4 +15,9 @@ class TokenRepository
     {
         cache()->set($token . '_tokenized-login', $userId, 120);
     }
+
+    public function send($token, $userId)
+    {
+        //
+    }
 }
