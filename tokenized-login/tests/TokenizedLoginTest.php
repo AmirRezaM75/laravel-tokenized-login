@@ -92,4 +92,24 @@ class TokenizedLoginTest extends TestCase
             'email' => $email
         ])->assertJson(['error' => 'You are banned']);
     }
+
+    /** @test */
+    public function can_not_request_if_email_does_not_exist()
+    {
+        $email = 'amirreza@hotmail.com';
+
+        UserRepositoryFacade::shouldReceive('getUserByEmail')->once()->with($email)->andReturn(null);
+
+        UserRepositoryFacade::shouldReceive('isBanned')->never();
+
+        TokenRepositoryFacade::shouldReceive('generate')->never();
+
+        TokenRepositoryFacade::shouldReceive('save')->never();
+
+        TokenRepositoryFacade::shouldReceive('send')->never();
+
+        $this->post(route('tokenized-login.request'),[
+            'email' => $email
+        ])->assertJson(['error' => 'User not found']);
+    }
 }

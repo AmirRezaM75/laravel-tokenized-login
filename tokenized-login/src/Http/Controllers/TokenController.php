@@ -15,6 +15,9 @@ class TokenController
     {
         $user = UserRepositoryFacade::getUserByEmail($request->get('email'));
 
+        if (! $user)
+            return ResponderFacade::userNotFound();
+
         if (UserRepositoryFacade::isBanned($user->id))
             return ResponderFacade::blockedUser();
 

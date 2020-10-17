@@ -9,4 +9,6 @@ interface ResponderInterface
     public function blockedUser();
 
     public function tokenIsSent();
+
+    public function userNotFound();
 }

@@ -18,4 +18,9 @@ class AndroidResponder implements ResponderInterface
     {
         return response()->json(['content' => 'Token was sent to your email'], Response::HTTP_OK);
     }
+
+    public function userNotFound()
+    {
+        return response()->json(['err' => 'User not found'], Response::HTTP_BAD_REQUEST);
+    }
 }
