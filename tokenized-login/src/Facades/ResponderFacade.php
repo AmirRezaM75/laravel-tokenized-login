@@ -3,10 +3,11 @@
 
 namespace TokenizedLogin\Facades;
 
-class TokenRepositoryFacade extends BaseFacade
+
+class ResponderFacade extends BaseFacade
 {
     protected static function getFacadeAccessor()
     {
-        return 'tokenized-login.token-repository';
+        return 'laravel-tokenized.responder';
     }
 }

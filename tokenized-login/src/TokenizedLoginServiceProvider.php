@@ -4,8 +4,10 @@ namespace TokenizedLogin;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use TokenizedLogin\Facades\ResponderFacade;
 use TokenizedLogin\Facades\TokenRepositoryFacade;
 use TokenizedLogin\Facades\UserRepositoryFacade;
+use TokenizedLogin\Http\Responses\VueResponder;
 use TokenizedLogin\Repositories\TokenRepository;
 use TokenizedLogin\Repositories\UserRepository;
 
@@ -15,6 +17,7 @@ class TokenizedLoginServiceProvider extends ServiceProvider {
     {
         UserRepositoryFacade::proxy(UserRepository::class);
         TokenRepositoryFacade::proxy(TokenRepository::class);
+        ResponderFacade::proxy(VueResponder::class);
 
         Route::prefix('api/tokenized-login')
             ->name('tokenized-login.')

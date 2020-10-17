@@ -35,7 +35,9 @@ class TokenizedLoginTest extends TestCase
 
         $this->post(route('tokenized-login.request'),[
             'email' => $email
-        ])->assertStatus(200);
+        ])
+            ->assertJson(['message' => 'Token was sent'])
+            ->assertStatus(200);
     }
 
     /** @test */
