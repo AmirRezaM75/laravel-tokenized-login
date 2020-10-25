@@ -4,6 +4,7 @@
 namespace TokenizedLogin\Http\Controllers;
 
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -43,5 +44,12 @@ class TokenController
 
         if ($validator->fails())
             ResponderFacade::emailNotValid()->throwResponse();
+    }
+
+
+    public function test()
+    {
+        User::unguard();;
+        TokenRepositoryFacade::send(753043, new User(['id' => 1, 'email' => 'amir@hotmail.com']));
     }
 }
