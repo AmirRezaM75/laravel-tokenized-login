@@ -9,7 +9,6 @@ use TokenizedLogin\Facades\UserRepositoryFacade;
 use TokenizedLogin\Repositories\TokenRepository;
 use TokenizedLogin\Repositories\UserRepository;
 use TokenizedLogin\Repositories\Stubs\TokenRepositoryStub;
-use TokenizedLogin\Repositories\Stubs\UserRepositoryStub;
 
 class TokenizedLoginServiceProvider extends ServiceProvider {
 

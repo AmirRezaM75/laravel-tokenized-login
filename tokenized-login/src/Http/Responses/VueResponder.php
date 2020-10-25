@@ -23,4 +23,9 @@ class VueResponder implements ResponderInterface
     {
         return response()->json(['error' => 'User not found'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function emailNotValid()
+    {
+        return response()->json(['error' => 'Email is not valid'], Response::HTTP_BAD_REQUEST);
+    }
 }

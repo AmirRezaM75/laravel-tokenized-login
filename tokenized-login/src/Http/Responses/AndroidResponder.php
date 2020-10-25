@@ -23,4 +23,9 @@ class AndroidResponder implements ResponderInterface
     {
         return response()->json(['err' => 'User not found'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function emailNotValid()
+    {
+        return response()->json(['err' => 'This email seems to be incorrect'], Response::HTTP_BAD_REQUEST);
+    }
 }

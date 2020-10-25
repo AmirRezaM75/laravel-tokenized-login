@@ -11,4 +11,6 @@ interface ResponderInterface
     public function tokenIsSent();
 
     public function userNotFound();
+
+    public function emailNotValid();
 }
