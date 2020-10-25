@@ -16,7 +16,7 @@ class TokenRepository
 
     public function save(int $token, $userId)
     {
-        cache()->set($token . '_tokenized-login', $userId, 120);
+        cache()->set($token . '_tokenized-login', $userId, config('tokenized-login.token_ttl'));
     }
 
     public function send($token, $user)

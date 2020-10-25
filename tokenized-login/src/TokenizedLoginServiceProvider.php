@@ -14,6 +14,8 @@ class TokenizedLoginServiceProvider extends ServiceProvider {
 
     public function register()
     {
+        $this->mergeConfigFrom(__DIR__ . '/../config/tokenized-login.php', 'tokenized-login');
+
         UserRepositoryFacade::proxy(UserRepository::class);
         TokenRepositoryFacade::proxy(app()->runningUnitTests() ? TokenRepositoryStub::class : TokenRepository::class);
 
