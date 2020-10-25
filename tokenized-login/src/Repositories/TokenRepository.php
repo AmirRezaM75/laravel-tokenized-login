@@ -4,6 +4,9 @@
 namespace TokenizedLogin\Repositories;
 
 
+use Illuminate\Support\Facades\Notification;
+use TokenizedLogin\Notifications\SendTokenNotification;
+
 class TokenRepository
 {
     public function generate()
@@ -16,8 +19,8 @@ class TokenRepository
         cache()->set($token . '_tokenized-login', $userId, 120);
     }
 
-    public function send($token, $userId)
+    public function send($token, $user)
     {
-        //
+        Notification::send($user, new SendTokenNotification($token));
     }
 }

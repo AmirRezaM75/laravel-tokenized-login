@@ -33,7 +33,7 @@ class TokenizedLoginTest extends TestCase
 
         TokenRepositoryFacade::shouldReceive('save')->once()->with('1234', $user->id);
 
-        TokenRepositoryFacade::shouldReceive('send')->once()->with('1234', $user->id);
+        TokenRepositoryFacade::shouldReceive('send')->once()->with('1234', $user);
 
         $this->post(route('tokenized-login.request'),[
             'email' => $email

@@ -16,7 +16,7 @@ class TokenRepositoryStub
         //
     }
 
-    public function send($token, $userId)
+    public function send($token, $user)
     {
         //
     }
