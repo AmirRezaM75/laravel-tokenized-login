@@ -46,21 +46,12 @@ class TokenizedLoginTest extends TestCase
     public function it_can_request_from_android_devices()
     {
         User::unguard();
-        $this->withoutExceptionHandling();
         $email = 'amirreza@hotmail.com';
 
-        UserRepositoryFacade::shouldReceive('isBanned')->once()->with(1)->andReturn(false);
+        UserRepositoryFacade::shouldReceive('isBanned')->andReturn(false);
 
         UserRepositoryFacade::shouldReceive('getUserByEmail')
-            ->once()
-            ->with($email)
             ->andReturn($user = new User(['id' => 1, 'email' => $email]));
-
-        TokenRepositoryFacade::shouldReceive('generate')->once()->withNoArgs()->andReturn('1234');
-
-        TokenRepositoryFacade::shouldReceive('save')->once()->with('1234', $user->id);
-
-        TokenRepositoryFacade::shouldReceive('send')->once()->with('1234', $user->id);
 
         $this->post(route('tokenized-login.request', ['client' => 'android']),[
             'email' => $email
