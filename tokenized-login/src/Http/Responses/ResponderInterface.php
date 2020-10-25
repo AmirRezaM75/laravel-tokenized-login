@@ -13,4 +13,6 @@ interface ResponderInterface
     public function userNotFound();
 
     public function emailNotValid();
+
+    public function userIsLogged();
 }

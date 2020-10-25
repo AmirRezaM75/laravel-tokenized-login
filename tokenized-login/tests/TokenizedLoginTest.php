@@ -121,4 +121,24 @@ class TokenizedLoginTest extends TestCase
             'email' => 'something_hotmail.com'
         ])->assertJson(['error' => 'Email is not valid']);
     }
+
+    /** @test */
+    public function can_not_request_if_user_is_authenticated()
+    {
+        $this->actingAs(new User());
+
+        UserRepositoryFacade::shouldReceive('getUserByEmail')->never();
+
+        UserRepositoryFacade::shouldReceive('isBanned')->never();
+
+        TokenRepositoryFacade::shouldReceive('generate')->never();
+
+        TokenRepositoryFacade::shouldReceive('save')->never();
+
+        TokenRepositoryFacade::shouldReceive('send')->never();
+
+        $this->post(route('tokenized-login.request'),[
+            'email' => 'amir@hotmail.com'
+        ])->assertJson(['error' => 'You are already logged in']);
+    }
 }

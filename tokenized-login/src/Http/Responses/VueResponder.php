@@ -28,4 +28,9 @@ class VueResponder implements ResponderInterface
     {
         return response()->json(['error' => 'Email is not valid'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function userIsLogged()
+    {
+        return response()->json(['error' => 'You are already logged in'], Response::HTTP_BAD_REQUEST);
+    }
 }

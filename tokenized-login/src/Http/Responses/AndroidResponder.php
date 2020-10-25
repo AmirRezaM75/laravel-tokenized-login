@@ -28,4 +28,9 @@ class AndroidResponder implements ResponderInterface
     {
         return response()->json(['err' => 'This email seems to be incorrect'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function userIsLogged()
+    {
+        return response()->json(['err' => 'Your account is logged in'], Response::HTTP_BAD_REQUEST);
+    }
 }
