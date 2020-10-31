@@ -15,4 +15,8 @@ interface ResponderInterface
     public function emailNotValid();
 
     public function userIsLogged();
+
+    public function loggedIn();
+
+    public function tokenIsInvalid();
 }

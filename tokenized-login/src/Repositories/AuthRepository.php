@@ -11,4 +11,9 @@ class AuthRepository
     {
         return Auth::check();
     }
+
+    public function login($userId)
+    {
+        return auth()->loginUsingId($userId);
+    }
 }

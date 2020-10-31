@@ -33,4 +33,14 @@ class VueResponder implements ResponderInterface
     {
         return response()->json(['error' => 'You are already logged in'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function loggedIn()
+    {
+        return response()->json(['message' => 'You are logged in'], Response::HTTP_OK);
+    }
+
+    public function tokenIsInvalid()
+    {
+        return response()->json(['error' => 'Seems that you entered a wrong token'], Response::HTTP_BAD_REQUEST);
+    }
 }

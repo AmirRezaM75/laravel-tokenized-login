@@ -19,6 +19,11 @@ class TokenRepository
         cache()->set($token . '_tokenized-login', $userId, config('tokenized-login.token_ttl'));
     }
 
+    public function get($token)
+    {
+        cache()->get($token.'_tokenized-login');
+    }
+
     public function send($token, $user)
     {
         Notification::send($user, new SendTokenNotification($token));

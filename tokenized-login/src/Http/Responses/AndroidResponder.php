@@ -33,4 +33,14 @@ class AndroidResponder implements ResponderInterface
     {
         return response()->json(['err' => 'Your account is logged in'], Response::HTTP_BAD_REQUEST);
     }
+
+    public function loggedIn()
+    {
+        return response()->json(['content' => 'You are successfully logged in'], Response::HTTP_OK);
+    }
+
+    public function tokenIsInvalid()
+    {
+        return response()->json(['err' => 'Token is invalid'], Response::HTTP_BAD_REQUEST);
+    }
 }

@@ -6,7 +6,7 @@ namespace TokenizedLogin\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class BaseFacade extends Facade
+abstract class BaseFacade extends Facade
 {
     public static function proxy($class)
     {

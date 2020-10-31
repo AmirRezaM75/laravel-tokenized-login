@@ -38,6 +38,19 @@ class TokenController
         return ResponderFacade::tokenIsSent();
     }
 
+    public function login(Request $request)
+    {
+        $userId = TokenRepositoryFacade::get($request->get('token'));
+
+        if (! $userId) {
+            return ResponderFacade::tokenIsInvalid();
+        }
+
+        AuthRepositoryFacade::login($userId);
+        
+        return ResponderFacade::loggedIn();
+    }
+
     private function validateEmail(Request $request)
     {
         $validator = Validator::make($request->all(), ['email' => 'required|email']);
