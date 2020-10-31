@@ -4,6 +4,7 @@ namespace TokenizedLogin\Tests;
 
 use App\User;
 use Tests\TestCase;
+use TokenizedLogin\Facades\AuthRepositoryFacade;
 use TokenizedLogin\Facades\TokenRepositoryFacade;
 use TokenizedLogin\Facades\UserRepositoryFacade;
 
@@ -125,7 +126,9 @@ class TokenizedLoginTest extends TestCase
     /** @test */
     public function can_not_request_if_user_is_authenticated()
     {
-        $this->actingAs(new User());
+//        $this->actingAs(new User());
+        // Or
+        AuthRepositoryFacade::shouldReceive('check')->once()->andReturn(true);
 
         UserRepositoryFacade::shouldReceive('getUserByEmail')->never();
 

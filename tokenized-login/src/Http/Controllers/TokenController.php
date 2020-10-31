@@ -6,8 +6,8 @@ namespace TokenizedLogin\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use TokenizedLogin\Facades\AuthRepositoryFacade;
 use TokenizedLogin\Facades\ResponderFacade;
 use TokenizedLogin\Facades\TokenRepositoryFacade;
 use TokenizedLogin\Facades\UserRepositoryFacade;
@@ -18,7 +18,7 @@ class TokenController
     {
         $this->validateEmail($request);
 
-        if (Auth::check())
+        if (AuthRepositoryFacade::check())
             return ResponderFacade::userIsLogged();
 
         $user = UserRepositoryFacade::getUserByEmail($request->get('email'));
@@ -49,7 +49,7 @@ class TokenController
 
     public function test()
     {
-        User::unguard();;
+        User::unguard();
         TokenRepositoryFacade::send(753043, new User(['id' => 1, 'email' => 'amir@hotmail.com']));
     }
 }
