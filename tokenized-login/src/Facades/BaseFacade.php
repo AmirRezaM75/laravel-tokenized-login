@@ -15,6 +15,6 @@ class BaseFacade extends Facade
 
     protected static function getFacadeAccessor()
     {
-        return static::KEY;
+        return static::class;
     }
 }
