@@ -5,8 +5,5 @@ namespace TokenizedLogin\Facades;
 
 class UserRepositoryFacade extends BaseFacade
 {
-    protected static function getFacadeAccessor()
-    {
-        return 'tokenized-login.user-repository';
-    }
+    const KEY = 'tokenized-login.user-repository';
 }

@@ -12,4 +12,9 @@ class BaseFacade extends Facade
     {
         app()->singleton(static::getFacadeAccessor(), $class);
     }
+
+    protected static function getFacadeAccessor()
+    {
+        return static::KEY;
+    }
 }
