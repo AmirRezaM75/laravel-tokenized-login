@@ -4,8 +4,60 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0c0458cd7bf0aa562d0e4f09f6d9d59",
+    "content-hash": "86c898473b9368b08af2862987cd4002",
     "packages": [
+        {
+            "name": "amirrezam75/tokenized-login",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AmirRezaM75/tokenized-login.git",
+                "reference": "4318dbda5dd25a21bacf0c3d06557934026206f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AmirRezaM75/tokenized-login/zipball/4318dbda5dd25a21bacf0c3d06557934026206f2",
+                "reference": "4318dbda5dd25a21bacf0c3d06557934026206f2",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.1|6.*|7.*|8.*",
+                "php": "^7.1.3|7.2.*|7.3.*|7.4.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "*",
+                "orchestra/testbench": "~3.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AmirRezaM75\\TokenizedLogin\\TokenizedLoginServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AmirRezaM75\\TokenizedLogin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amir Reza Mehrbakhsh",
+                    "email": "amirrezax@hotmail.com"
+                }
+            ],
+            "homepage": "https://github.com/amirrezam75/tokenized-login",
+            "keywords": [
+                "laravel",
+                "php"
+            ],
+            "time": "2020-11-03T06:54:14+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.1",
@@ -4374,6 +4426,7 @@
                 "faker",
                 "fixtures"
             ],
+            "abandoned": true,
             "time": "2019-12-12T13:22:17+00:00"
         },
         {
