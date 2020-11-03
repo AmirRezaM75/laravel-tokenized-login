@@ -22,11 +22,12 @@ class TokenizedLoginServiceProvider extends ServiceProvider {
         UserRepositoryFacade::proxy(UserRepository::class);
         TokenRepositoryFacade::proxy(app()->runningUnitTests() ? TokenRepositoryStub::class : TokenRepository::class);
 
-        Route::prefix('api/tokenized-login')
-            ->name('tokenized-login.')
-            ->middleware('api')
-            ->namespace('TokenizedLogin\Http\Controllers')
-            ->group(__DIR__ . '/../routes/api.php');
+        if (! $this->app->routesAreCached())
+            Route::prefix('api/tokenized-login')
+                ->name('tokenized-login.')
+                ->middleware('api')
+                ->namespace('TokenizedLogin\Http\Controllers')
+                ->group(__DIR__ . '/../routes/api.php');
     }
 
     public function boot()

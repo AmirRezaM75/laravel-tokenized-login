@@ -47,7 +47,7 @@ class TokenController
         }
 
         AuthRepositoryFacade::login($userId);
-        
+
         return ResponderFacade::loggedIn();
     }
 
